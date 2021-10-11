@@ -1,0 +1,34 @@
+﻿<Window x:Class="Example.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		  xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:Example"
+		  xmlns:dependencyObjects="clr-namespace:ItemHeldDelay.DependencyObjects"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+		<ListView dependencyObjects:ItemHeld.HeldCommand="{x:Static local:MainWindow.ItemHeldCommand}"
+					 ItemsSource="{Binding Quotations}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<Border Margin="2" Padding="12, 2"
+							  BorderThickness="1"
+							  BorderBrush="LightGray"
+							  CornerRadius="2"
+							  Background="#02000004"
+							  >
+						<StackPanel>
+							<Label Content="{Binding content}" Margin="0,0,0, -2" />
+							<Label Content="{Binding author}" 
+									 FontWeight="Bold"
+									 Margin="0, -2, 0, 0" />
+						</StackPanel>
+					</Border>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+			
+		</ListView>
+    </Grid>
+</Window>
